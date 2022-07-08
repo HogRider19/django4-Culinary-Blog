@@ -6,3 +6,5 @@ ENV/
 env.bak/
 Readme.md
 keyAPI.py
+
+__pycache__
