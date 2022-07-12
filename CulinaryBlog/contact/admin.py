@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ContactModel, ContactLink
+from .models import ContactModel, ContactLink, About, Socials, ImageAbout
 
 
 class ContactModelAdmin(admin.ModelAdmin):
@@ -8,5 +8,17 @@ class ContactModelAdmin(admin.ModelAdmin):
     list_display_links = ['name']
 
 
+class ImageAboutInLine(admin.StackedInline):
+    model = ImageAbout
+    extra = 3
+
+
+class AboutAdmin(admin.ModelAdmin):
+    model = About
+    inlines = [ImageAboutInLine]
+
+
 admin.site.register(ContactModel, ContactModelAdmin)
+admin.site.register(About, AboutAdmin)
 admin.site.register(ContactLink)
+admin.site.register(Socials)
