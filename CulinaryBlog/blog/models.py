@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
 from django.contrib.auth.models import User
@@ -76,8 +77,9 @@ class Recipe(models.Model):
 class Comment(models.Model):
     name = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
-    website = models.CharField(max_length=200)
+    website = models.CharField(max_length=200, blank=True, null=True)
     message = models.TextField()
+    create_at = models.DateTimeField(default=timezone.now)
     post = models.ForeignKey(
         Post,
         related_name='comment',

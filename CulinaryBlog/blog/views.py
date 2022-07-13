@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DeleteView
-from blog.models import Post
+from django.views.generic import ListView, DeleteView, CreateView
+from blog.models import Post, Comment
+from .forms import CommentForm
 
 
 def home(request):
@@ -26,5 +27,19 @@ class PostDetailView(DeleteView):
     context_object_name = 'post'
     template_name = 'blog/post_detail.html'
     slug_url_kwarg = 'post_slug'
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = CommentForm()
+        return context
+
+
+class CreateComment(CreateView):
+    model = Comment
+    form_class = CommentForm
+
+
+
 
 

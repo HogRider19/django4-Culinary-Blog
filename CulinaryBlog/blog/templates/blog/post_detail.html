@@ -178,12 +178,16 @@
                             <h4>Leave a comment</h4>
                         </div>
                         <form action="#">
+                            {% csrf_token %}
                             <div class="input-list">
-                                <input type="text" placeholder="Name">
+                                <!-- <input type="text" placeholder="Name">
                                 <input type="text" placeholder="Email">
-                                <input type="text" placeholder="Website">
+                                <input type="text" placeholder="Website"> -->
+                                {{ form.name }}
+                                {{ form.email }}
+                                {{ form.website }}
                             </div>
-                            <textarea placeholder="Message"></textarea>
+                            {{ form.message }}
                             <button type="submit" class="site-btn">Submit</button>
                         </form>
                     </div>
