@@ -28,7 +28,6 @@
                         <ul>
                             {% for contact in contacts%}
                             <li>
-                                <!-- <i class="fa fa-map-marker"></i> -->
                                 <img class="contact_icon" src="{{ contact.icon.url }}">
                                 <span>{{ contact.name }}</span>
                             </li>
@@ -44,10 +43,6 @@
                                 and well documented. Realy theme provides quick support.</p>
                         </div>
                         <form action="{% url 'feedback' %}" method="post">
-                            <!-- <input type="text" placeholder="Name">
-                            <input type="text" placeholder="Email">
-                            <input type="text" placeholder="Website">
-                            <textarea placeholder="Message"></textarea> -->
                             {% csrf_token %}
                             {{ form }}
                             <button type="submit" class="site-btn">Submit</button>

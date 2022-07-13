@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ContactModel, ContactLink, About, Socials, ImageAbout
+from .models import ContactModel, ContactLink, About, Social, ImageAbout
 
 
 class ContactModelAdmin(admin.ModelAdmin):
@@ -21,4 +21,4 @@ class AboutAdmin(admin.ModelAdmin):
 admin.site.register(ContactModel, ContactModelAdmin)
 admin.site.register(About, AboutAdmin)
 admin.site.register(ContactLink)
-admin.site.register(Socials)
+admin.site.register(Social)

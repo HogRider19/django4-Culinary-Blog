@@ -36,10 +36,13 @@ class ImageAbout(models.Model):
     alt = models.CharField(max_length=100, null=True, blank=True)
 
 
-class Socials(models.Model):
+class Social(models.Model):
     """Класс модели социальный сетей в блоке о нас"""
     icon = models.FileField(upload_to='icons/')
     name = models.CharField(max_length=200)
     link = models.URLField()
+
+    def __str__(self):
+        return self.name
 
 
