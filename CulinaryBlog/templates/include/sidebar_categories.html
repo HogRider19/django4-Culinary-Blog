@@ -1,0 +1,25 @@
+{% load mptt_tags menu_tags %}
+
+{% get_list_categories as list_category %}
+
+<div class="sidebar__item__categories">
+    <div class="sidebar__item__title">
+        <h6>Categories</h6>
+    </div>
+    <ul>
+
+        <ul class="dropdown__menu">
+            {% recursetree list_category %}
+            <li>
+                <a href="{% url 'post_list' node.slug %}">{{ node.name }}</a>
+                {% if not node.is_leaf_node %}
+                    <ul class="children">
+                        {{ children }}
+                    </ul>
+                {% endif %}
+            </li>
+            {% endrecursetree %}
+        </ul>
+
+    </ul>
+</div>
