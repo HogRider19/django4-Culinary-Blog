@@ -42,9 +42,8 @@
                     <div class="footer__logo">
                         <a href="#"><img src="{% static 'img/logo.png' %}" alt=""></a>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                        ut<br /> labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus
-                        commodo viverra<br /> maecenas accumsan lacus vel facilisis. </p>
+                    {% get_about as about_item %}
+                    <p>{{ about_item.mini_text|safe }}</p>
                     <div class="footer__social">
                         {% get_social_links as social_links %}
                         {% for item in social_links %}
