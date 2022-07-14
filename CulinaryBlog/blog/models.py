@@ -51,6 +51,9 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def get_comments(self):
+        return self.comments.all()
+
     def get_absolute_url(self):
         return reverse('post_single', kwargs={'slug':self.category.slug, 'post_slug':self.slug})
 
@@ -82,7 +85,7 @@ class Comment(models.Model):
     create_at = models.DateTimeField(default=timezone.now)
     post = models.ForeignKey(
         Post,
-        related_name='comment',
+        related_name='comments',
         on_delete=models.CASCADE
     )
 

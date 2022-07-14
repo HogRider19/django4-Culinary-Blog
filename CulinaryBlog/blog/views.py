@@ -39,6 +39,15 @@ class CreateComment(CreateView):
     model = Comment
     form_class = CommentForm
 
+    def form_valid(self, form):
+        form.instance.post_id = self.kwargs.get('pk')
+        self.object = form.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        """Return the URL to redirect to after processing a valid form."""
+        return self.object.post.get_absolute_url()
+
 
 
 
