@@ -4,17 +4,15 @@ from blog.models import Post, Comment
 from .forms import CommentForm
 
 
-def home(request):
-    return render(request, 'base.html', {})
-
-
 class HomeView(ListView):
+    """Отображение главной страницы"""
     model = Post
     paginate_by = 9
     template_name = 'blog/home.html'
 
 
 class PostListView(ListView):
+    """Отображение постов в выбранной категории"""
     model = Post
     template_name = 'blog/post_list.html'
 
@@ -23,11 +21,11 @@ class PostListView(ListView):
 
 
 class PostDetailView(DeleteView):
+    """Отображение конкретного поста"""
     model = Post
     context_object_name = 'post'
     template_name = 'blog/post_detail.html'
     slug_url_kwarg = 'post_slug'
-
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -36,6 +34,7 @@ class PostDetailView(DeleteView):
 
 
 class CreateComment(CreateView):
+    """Создание комментария к посту"""
     model = Comment
     form_class = CommentForm
 
@@ -45,10 +44,4 @@ class CreateComment(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        """Return the URL to redirect to after processing a valid form."""
         return self.object.post.get_absolute_url()
-
-
-
-
-

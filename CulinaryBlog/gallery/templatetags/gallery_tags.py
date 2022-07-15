@@ -6,5 +6,6 @@ register = template.Library()
 
 @register.inclusion_tag('include/tags/gallery_tag.html')
 def get_gallery():
+    """Получение фотографий из галереи"""
     photos = Photo.objects.order_by()[:5]
     return {"photos": photos}

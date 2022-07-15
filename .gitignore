@@ -4,10 +4,23 @@ env/
 venv/
 ENV/
 env.bak/
-Readme.md
-keyAPI.py
 
-__pycache__
 
 templatesExample/
 templatesExample
+
+dist
+db.sqlite3
+
+__pycache__/
+*/__pycache__/
+*.py[cod]
+.pyc
+*.pyc
+
+!*media/.gitkeep
+media/*
+
+secret_keys.py
+
+log/debug.log

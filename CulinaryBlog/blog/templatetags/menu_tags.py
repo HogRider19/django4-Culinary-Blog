@@ -18,11 +18,13 @@ def get_list_categories():
 
 @register.inclusion_tag('include/tags/top_menu.html')
 def get_categories():
+    """Рендер шаблона со всеми категориями"""
     category = get_all_categories()
     return {"list_category": category}
-    
+
 
 @register.inclusion_tag('include/tags/recipes_tag.html')
 def get_last_posts():
+    """Получение последних постов"""
     posts = Post.objects.select_related('category').order_by('-id')[:5]
     return {"list_last_post": posts}

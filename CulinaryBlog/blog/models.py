@@ -7,6 +7,7 @@ from ckeditor.fields import RichTextField
 
 
 class Category(MPTTModel):
+    """Модель категорий"""
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
     parent = TreeForeignKey(
@@ -25,6 +26,7 @@ class Category(MPTTModel):
 
 
 class Tag(models.Model):
+    """Модель тегов к посту"""
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
 
@@ -33,20 +35,24 @@ class Tag(models.Model):
 
 
 class Post(models.Model):
+    """Модель постов"""
     slug = models.SlugField(max_length=200, default='', unique=True)
-    author = models.ForeignKey(
-        User, related_name='posts', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = models.TextField()
     image = models.ImageField(upload_to='articles/')
+    tags = models.ManyToManyField(Tag, related_name='post')
+    create_at = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(
         Category,
         related_name='post',
         on_delete=models.SET_NULL,
         null=True
     )
-    tags = models.ManyToManyField(Tag, related_name='post')
-    create_at = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey(
+        User,
+        related_name='posts',
+        on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return self.title
@@ -59,6 +65,7 @@ class Post(models.Model):
 
 
 class Recipe(models.Model):
+    """Модель рецептов"""
     name = models.CharField(max_length=100)
     serves = models.CharField(max_length=50)
     prep_time = models.PositiveIntegerField(blank=True, null=True)
@@ -78,6 +85,7 @@ class Recipe(models.Model):
 
 
 class Comment(models.Model):
+    """Модель комментариев к постам"""
     name = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
     website = models.CharField(max_length=200, blank=True, null=True)

@@ -24,26 +24,28 @@ class ContactLink(models.Model):
 
 
 class About(models.Model):
-    """Класс модели о нас"""
+    """Класс модели об авторе"""
     name = models.CharField(max_length=50, default='')
     text = RichTextField()
     mini_text = RichTextField()
 
 
 class ImageAbout(models.Model):
-    """Класс модели изображений в блоке о нас"""
+    """Класс модели изображений в блоке об авторе"""
     image = models.ImageField(upload_to='about/')
-    page = models.ForeignKey(About, on_delete=models.CASCADE, related_name='images')
     alt = models.CharField(max_length=100, null=True, blank=True)
+    page = models.ForeignKey(
+        About,
+        on_delete=models.CASCADE,
+        related_name='images'
+    )
 
 
 class Social(models.Model):
-    """Класс модели социальный сетей в блоке о нас"""
+    """Класс модели социальный сетей в блоке об авторе"""
     icon = models.FileField(upload_to='icons/')
     name = models.CharField(max_length=200)
     link = models.URLField()
 
     def __str__(self):
         return self.name
-
-

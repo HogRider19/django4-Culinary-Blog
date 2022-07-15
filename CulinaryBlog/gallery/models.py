@@ -16,9 +16,8 @@ class Photo(models.Model):
         ordering = ['name']
 
 
-
 class Gallery(models.Model):
-    """Модель калкреи""" 
+    """Модель галереи"""
     name = models.CharField(max_length=250)
     images = models.ManyToManyField(Photo)
     captions = models.TextField(blank=True)

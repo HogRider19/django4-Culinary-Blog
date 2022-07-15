@@ -7,11 +7,11 @@ register = template.Library()
 
 @register.simple_tag()
 def get_social_links():
-    """Вывод ссылок социальных сетей"""
+    """Вывод ссылок социальных сетей автора"""
     return Social.objects.all()
 
 
 @register.simple_tag()
 def get_about():
-    """Вывод about"""
+    """Вывод информации об авторе"""
     return About.objects.last()
