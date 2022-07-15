@@ -1,0 +1,1 @@
+SECRET_KEY_PROJECT = 'django-insecure-u&y5-^q6qy5ojp19nfqmy-i@tbh-_m$##@^s=njkh7z#@m6#nf'
