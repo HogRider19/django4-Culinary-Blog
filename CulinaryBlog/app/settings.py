@@ -131,6 +131,13 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': BASE_DIR / 'cache',
+    }
+}
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

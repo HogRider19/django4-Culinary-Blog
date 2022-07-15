@@ -1,6 +1,8 @@
 {% load static %}
-{% load social_tags %}
+{% load social_tags cache %}
 
+
+{% cache 5000 header %}
 <footer class="footer">
     <div class="container-fluid">
         <div class="footer__instagram">
@@ -60,3 +62,4 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </div>
     </div>
 </footer>
+{% endcache %}
