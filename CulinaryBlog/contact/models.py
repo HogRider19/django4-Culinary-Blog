@@ -3,7 +3,7 @@ from django.db import models
 
 
 class ContactModel(models.Model):
-    """Класс модели обратной связи"""
+    """Класс модели обратной связи с автором"""
     name = models.CharField(max_length=50)
     email = models.CharField(max_length=150)
     website = models.URLField(blank=True, null=True)

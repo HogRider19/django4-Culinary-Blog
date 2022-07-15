@@ -6,6 +6,7 @@ from .models import ContactLink, About
 
 
 class ContactView(View):
+    """Отображение страницы обратной связи с автором"""
     def get(self, request):
         contacts = ContactLink.objects.all()
         form = ContactForm()
@@ -13,14 +14,13 @@ class ContactView(View):
 
 
 class CreateContact(CreateView):
+    """Отравка формы обратной связи"""
     form_class = ContactForm
     success_url = '/'
 
 
 class AboutView(View):
+    """Отображение страницы об авторе"""
     def get(self, request):
         about = About.objects.last()
         return render(request, 'contact/about.html', {'about': about})
-
-
-
